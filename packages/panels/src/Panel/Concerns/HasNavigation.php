@@ -108,8 +108,15 @@ trait HasNavigation
             ->map(function (Collection $items, ?string $groupIndex) use ($groups): NavigationGroup {
                 $parentItems = $items->groupBy(fn (NavigationItem $item): ?string => $item->getParentItem());
 
-                $items = $parentItems->get('')
-                    ->keyBy(fn (NavigationItem $item): string => $item->getLabel());
+                $items = $parentItems->get('');
+
+                if (! $items) {
+                    throw new Exception(
+                        'Parent item [' .$groupIndex . '] is not registered in the navigation. Please verify that the visibility permissions are correctly configured',
+                    );                    
+                }
+                
+                $items->keyBy(fn (NavigationItem $item): string => $item->getLabel());
 
                 $parentItems->except([''])->each(function (Collection $parentItemItems, string $parentItemLabel) use ($items) {
                     if (! $items->has($parentItemLabel)) {
