@@ -2,7 +2,6 @@
 
 namespace Filament\Actions\Imports;
 
-use Carbon\CarbonInterface;
 use Filament\Actions\Imports\Models\Import;
 use Filament\Forms\Components\Component;
 use Illuminate\Database\Eloquent\Model;
