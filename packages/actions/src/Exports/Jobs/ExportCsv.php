@@ -127,7 +127,11 @@ class ExportCsv implements ShouldQueue
 
     public function retryUntil(): ?CarbonInterface
     {
-        return $this->exporter->getJobRetryUntil();
+        if (method_exists($this->exporter, 'getJobRetryUntil')) {
+            return $this->exporter->getJobRetryUntil();
+        }
+
+        return null;
     }
 
     /**

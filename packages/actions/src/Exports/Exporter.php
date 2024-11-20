@@ -87,12 +87,7 @@ abstract class Exporter
             (new WithoutOverlapping("export{$this->export->getKey()}"))->expireAfter(600),
         ];
     }
-
-    public function getJobRetryUntil(): ?CarbonInterface
-    {
-        return now()->addDay();
-    }
-
+    
     /**
      * @return array<int, string>
      */
