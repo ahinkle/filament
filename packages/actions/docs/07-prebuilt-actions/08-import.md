@@ -681,7 +681,7 @@ If you'd like to customize the middleware that is applied to jobs of a certain i
 
 ### Customizing the import job retries
 
-By default, the import system will retry a job for 24 hours. This is to allow for temporary issues, such as the database being unavailable, to be resolved. That functionality is defined in the `getJobRetryUntil()` method on the importer class:
+By default, the import system uses Laravel's job retry functionality. However, if you want to customize this behavior for temporary issues, such as a database being unavailable, you can do so by defining the logic in the getJobRetryUntil() method on the importer class:
 
 ```php
 use Carbon\CarbonInterface;
