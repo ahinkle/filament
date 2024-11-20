@@ -652,7 +652,7 @@ If you'd like to customize the middleware that is applied to jobs of a certain e
 ### Customizing the export job retries
 
 
-By default, the export system uses Laravel's job retry functionality. However, if you want to customize this behavior for temporary issues, such as a database being unavailable, you can do so by defining the logic in the getJobRetryUntil() method on the export class.
+By default, the export system uses your application's default job retry functionality. However, if you want to customize this behavior for temporary issues, such as a database being unavailable, you can do so by defining the logic in the getJobRetryUntil() method on the export class.
 
 ```php
 use Carbon\CarbonInterface;
